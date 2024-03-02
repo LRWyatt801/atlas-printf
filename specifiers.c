@@ -1,22 +1,22 @@
-#include
+#include <stdarg.h>
 #include
 
 /**
+ * getspec - gets a function pointer and type of specifier
+ * @s: specifier character
+ * @args: list of variables
  *
- *
- *
- *
- *
+ * Return: identifier struct or NULL if none match
  */
 
-int (getspec(char *s))(args)
+int (getspec(char *s))(va_list args)
 {
 
 	spec identifiers[] = {
 		{"d", printdigit, int},
 		{"c", printchar, char},
 		{"s", printstr, *char},
-		{}
+		{"i", printint, int},
 		{NULL, NULL, NULL}
 	}
 int i;
@@ -25,6 +25,7 @@ while (identifiers[i]. != NULL)
 {
 	if (identifiers[i].s == *s)
 	{
-	identifiers[i].f(args);
-			
-			}
+		return (identifiers[i]);
+	}
+	else
+		return (NULL);

@@ -9,12 +9,17 @@
  * Return: 0 on success
  */
 
-int _printf(const char *format)
+int _printf(const char *format, ...)
 {
+	spec *functype;
 	va_list args;
+
+	if (format == NULL)
+		return (-1);
+
 	va_start(args, format);
 
-	while (*format != '\0')
+	while (*format)
 	{
 		if (*format == '%') /* checks '%specifier' */
 		{
@@ -23,7 +28,8 @@ int _printf(const char *format)
 				write(1, format, 1);
 			else
 			{
-				get_spec(*format);
+				functype = get_spec(*format);
+				functype.f(va_arg(args, functype.type));
 		}
 		else
 			write(1, format, 1);
