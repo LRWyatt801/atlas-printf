@@ -52,6 +52,14 @@ char int2str(int num)
 		}
 	}
 
+/**
+ *
+ *
+ *
+ *
+ *
+ *
+ */
 
 void  printdigit(int num)
 {
@@ -59,3 +67,26 @@ void  printdigit(int num)
 		wrie(1, str, strlen(str));
 	free(str);
 }
+
+
+void printchar(char a)
+{
+	write(1,a,1)
+}
+
+void printstr(char *bstr)
+{
+	int i = 0
+	while (bstr[i] != '\0')
+	{
+		write(1,bstr[i],1);
+		i++
+	}
+	
+	putchar('\0'); 
+	or
+	Write(1,bstr[i],1 or NULL);
+}
+
+
+
