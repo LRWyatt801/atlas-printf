@@ -11,7 +11,7 @@
 
 int _printf(const char *format, ...)
 {
-	spec *functype;
+	void (*f)(va_list);
 	va_list args;
 
 	if (format == NULL)
@@ -24,12 +24,13 @@ int _printf(const char *format, ...)
 		if (*format == '%') /* checks '%specifier' */
 		{
 			format++;
-			if (*format == '%') /* checks '%%' */
-				write(1, format, 1);
-			else
+			if (*format != '%') /* checks if not % */
 			{
-				functype = get_spec(*format);
-				functype.f(va_arg(args, functype.type));
+				f = getspec(format);
+				f(args);
+			}
+			else
+				write(1, format, 1);
 		}
 		else
 			write(1, format, 1);

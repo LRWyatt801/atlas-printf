@@ -3,20 +3,20 @@
 
 /* structs */
 
-typedef struct{
-	const char *s;
-	int (*f)(va_list);
-	const char type;
+typedef struct spec {
+	char *s;
+	void (*f)(va_list);
 } spec;
 
 /* prototypes */
 
-int (*getspec(char *s))(va_list);
+int _printf(const char *format, ...);
 
-void int2str(va_list);
-void printdigit(int num);
-void printchar(char a);
-void printstr(char *bstr);
-void printint(int num);
+void (*getspec(const char *s))(va_list);
+
+char *int2str(int num);
+void printdigit(va_list);
+void printchar(va_list);
+void printstr(va_list);
 
 #endif

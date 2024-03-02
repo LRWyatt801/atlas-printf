@@ -1,6 +1,7 @@
 #include <unistd.h>
 #include <stdarg.h>
-#include <main.h>
+#include <stdlib.h>
+#include "main.h"
 
 /**
  * int2str - converts int to string
@@ -9,45 +10,49 @@
  * Return - string array
  */
 
-char int2str(va_list num)
+char *int2str(int num)
 {
 	int i = 0;
-	char str = malloc(sizeof(char) * 12);
+	int digit;
+	char *str;
+	       
+	str = malloc(sizeof(char) * 12);
 
-	if (int < '0')
+	if (num < 0)
 	{
-		str[i++] = '-';
+		str[i] = '-';
+		i++;
 		num = -num;
 	}
-	if (num = 0)
+	if (num == 0)
 	{
-		str[i++] = '0';
+		str[i] = '0';
 	}
 	else
 	{
 		while (num != 0)
 		{
-			int digit = num % 10;
-			str[i++] = digit + '0';
+			digit = num % 10;
+			str[i] = digit + '0';
+			i++;
 			num = num / 10;
 		}
-
 		str[i] = '\0';
-
 		if (str[0] != '-')
 		{
 			int start;
-			i--;
+			int end = i - 1;
 
-			for (start = 0; start < i; start++)
+			for (start = 0; start < end; start++)
 			{
 				char tempstr = str[start];
-				str[start] = str[i];
-				str[i] = temp;
-				i--;
+				str[start] = str[end];
+				str[end] = tempstr;
+				end--;
 			}
 		}
 	}
+	return (str);
 }
 
 /**
@@ -57,12 +62,18 @@ char int2str(va_list num)
  * Return: n/a
  */
 
-void printdigit(va_list num))
+void printdigit(va_list args)
 {
-	char str = int2str(num);
-	while (str != '\0')
+	int num = va_arg(args, int);
+	char *str;
+
+	str = int2str(num);
+
+	while (*str != '\0')
+	{
 		write(1, str, 1);
-	free(str);
+		str++;
+	}
 }
 
 /**
@@ -72,9 +83,11 @@ void printdigit(va_list num))
  * Return: n/a
  */
 
-void printchar(va_list a)
+void printchar(va_list args)
 {
-	write(1, a, 1);
+	char a = va_arg(args, int);
+
+	write(1, &a, 1);
 }
 
 /**
@@ -84,12 +97,13 @@ void printchar(va_list a)
  * Return: n/a
  */
 
-void printstr(va_list bstr)
+void printstr(va_list args)
 {
-	int i = 0;
-	while (bstr[i] != '\0')
+	char *str = va_arg(args, char *);
+
+	while (*str != '\0')
 	{
-		write(1,bstr[i],1);
-		i++;
+		write(1, str, 1);
+		str++;
 	}
 }

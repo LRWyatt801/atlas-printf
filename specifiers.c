@@ -1,5 +1,5 @@
 #include <stdarg.h>
-#include <unsitd.h>
+#include <unistd.h>
 #include "main.h"
 
 /**
@@ -10,23 +10,22 @@
  * Return: identifier struct or NULL if none match
  */
 
-int (getspec(char *s))(va_list args)
+void (*getspec(const char *s))(va_list)
 {
-
 	spec identifiers[] = {
-		{"d", printdigit, int},
-		{"c", printchar, char},
-		{"s", printstr, *char},
-		{"i", printint, int},
-		{NULL, NULL, NULL}
-	}
-int i;
-i = 0;
-while (identifiers[i]. != NULL)
-{
-	if (identifiers[i].s == *s)
+		{"d", printdigit},
+		{"c", printchar},
+		{"s", printstr},
+		{"i", printdigit},
+		{NULL, NULL}
+	};
+	int i;
+	i = 0;
+	while (identifiers[i].s != NULL)
 	{
-		return (identifiers[i]);
+		if (*(identifiers[i].s) == *s)
+			return (identifiers[i].f);
+		i++;
 	}
-	else
-		return (NULL);
+	return (NULL);
+}
