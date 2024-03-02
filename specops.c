@@ -15,7 +15,9 @@ char *int2str(int num)
 	int i = 0;
 	int digit;
 	char *str;
-	       
+	int start = 0;
+	int end;
+
 	str = malloc(sizeof(char) * 12);
 
 	if (num < 0)
@@ -37,20 +39,21 @@ char *int2str(int num)
 			i++;
 			num = num / 10;
 		}
-		str[i] = '\0';
-		if (str[0] != '-')
-		{
-			int start;
-			int end = i - 1;
+		/*str[i] = '\0';*/
+	}
 
-			for (start = 0; start < end; start++)
-			{
-				char tempstr = str[start];
-				str[start] = str[end];
-				str[end] = tempstr;
-				end--;
-			}
-		}
+	if (str[0] == '-')
+		start = 1;
+
+	end = i - 1;
+
+	while (start < end)
+	{
+		char tempstr = str[start];
+		str[start] = str[end];
+		str[end] = tempstr;
+		end--;
+		start++;
 	}
 	return (str);
 }
@@ -62,9 +65,10 @@ char *int2str(int num)
  * Return: n/a
  */
 
-void printdigit(va_list args)
+int printdigit(va_list args)
 {
 	int num = va_arg(args, int);
+	int lenr = 0;
 	char *str;
 
 	str = int2str(num);
@@ -73,7 +77,9 @@ void printdigit(va_list args)
 	{
 		write(1, str, 1);
 		str++;
+		lenr++;
 	}
+	return (lenr);
 }
 
 /**
@@ -83,11 +89,12 @@ void printdigit(va_list args)
  * Return: n/a
  */
 
-void printchar(va_list args)
+int printchar(va_list args)
 {
 	char a = va_arg(args, int);
 
 	write(1, &a, 1);
+	return (1);
 }
 
 /**
@@ -97,13 +104,16 @@ void printchar(va_list args)
  * Return: n/a
  */
 
-void printstr(va_list args)
+int printstr(va_list args)
 {
 	char *str = va_arg(args, char *);
+	int lenr = 0;
 
 	while (*str != '\0')
 	{
 		write(1, str, 1);
 		str++;
+		lenr++;
 	}
+	return (lenr);
 }

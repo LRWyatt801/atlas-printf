@@ -11,8 +11,9 @@
 
 int _printf(const char *format, ...)
 {
-	void (*f)(va_list);
+	int (*f)(va_list);
 	va_list args;
+	int lenc = 0;
 
 	if (format == NULL)
 		return (-1);
@@ -28,13 +29,20 @@ int _printf(const char *format, ...)
 			{
 				f = getspec(format);
 				f(args);
+				lenc = lenc + f(args);
 			}
 			else
+			{
 				write(1, format, 1);
+				lenc++;
+			}
 		}
 		else
+		{
 			write(1, format, 1);
+			lenc++;
+		}
 		format++;
 	}
-	return (0);
+	return (lenc);
 }

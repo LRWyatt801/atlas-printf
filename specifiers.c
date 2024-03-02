@@ -10,7 +10,7 @@
  * Return: identifier struct or NULL if none match
  */
 
-void (*getspec(const char *s))(va_list)
+int (*getspec(const char *s))(va_list)
 {
 	spec identifiers[] = {
 		{"d", printdigit},
