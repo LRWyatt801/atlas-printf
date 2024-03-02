@@ -47,7 +47,12 @@ char int2str(int num)
 				char tempstr = str[start];
 				str[start] = str[i]
 					str[i] = temp
-					
+				i--;
+			}
+		}
+	}
+
+
 void  printdigit(int num)
 {
 	char str = int2str(num)
