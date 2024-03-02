@@ -1,6 +1,6 @@
-#include
-#include
-#include
+#include <unistd.h>
+#include <stdarg.h>
+#include <main.h>
 
 /**
  * int2str - converts int to string
@@ -9,7 +9,7 @@
  * Return - string array
  */
 
-char int2str(va_list args)
+char int2str(va_list num)
 {
 	int i = 0;
 	char str = malloc(sizeof(char) * 12);
@@ -57,7 +57,7 @@ char int2str(va_list args)
  * Return: n/a
  */
 
-void printdigit(va_list args)
+void printdigit(va_list num))
 {
 	char str = int2str(num);
 	while (str != '\0')
@@ -72,7 +72,7 @@ void printdigit(va_list args)
  * Return: n/a
  */
 
-void printchar(va_list args)
+void printchar(va_list a)
 {
 	write(1, a, 1);
 }
@@ -84,7 +84,7 @@ void printchar(va_list args)
  * Return: n/a
  */
 
-void printstr(va_list args)
+void printstr(va_list bstr)
 {
 	int i = 0;
 	while (bstr[i] != '\0')
@@ -92,8 +92,4 @@ void printstr(va_list args)
 		write(1,bstr[i],1);
 		i++;
 	}
-	
-	putchar('\0'); 
-	or
-	Write(1,bstr[i],1 or NULL);
 }
