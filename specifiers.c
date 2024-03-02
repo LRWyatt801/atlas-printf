@@ -9,19 +9,22 @@
  *
  */
 
-
-int (getspec(char *s))(*va_args)
+int (getspec(char *s))(args)
+{
 
 	spec identifiers[] = {
-		{"d", printdigit},
-		{"c", printchar}.
-		{"s", printstr}
-		{NULL, NULL}
+		{"d", printdigit, int},
+		{"c", printchar, char},
+		{"s", printstr, *char},
+		{}
+		{NULL, NULL, NULL}
 	}
-int i
-i = 0
+int i;
+i = 0;
 while (identifiers[i]. != NULL)
 {
-	if (identifiers[i]. [0] == *s)
-
-		return (identifiers[i].f) or (0)
+	if (identifiers[i].s == *s)
+	{
+	identifiers[i].f(args);
+			
+			}
