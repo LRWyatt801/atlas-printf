@@ -5,7 +5,6 @@
 /**
  * getspec - gets a function pointer and type of specifier
  * @s: specifier character
- * @args: list of variables
  *
  * Return: identifier struct or NULL if none match
  */
@@ -19,7 +18,9 @@ int (*getspec(const char *s))(va_list)
 		{"i", printdigit},
 		{NULL, NULL}
 	};
+
 	int i;
+
 	i = 0;
 	while (identifiers[i].s != NULL)
 	{
@@ -27,6 +28,5 @@ int (*getspec(const char *s))(va_list)
 			return (identifiers[i].f);
 		i++;
 	}
-	
 	return (NULL);
 }

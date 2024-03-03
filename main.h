@@ -1,9 +1,14 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-/* structs */
+/**
+ * struct spec - is a specifier character linked to function pointer
+ * @s: specifier character
+ * @f: function pointer to specop
+ */
 
-typedef struct spec {
+typedef struct spec
+{
 	char *s;
 	int (*f)(va_list);
 } spec;

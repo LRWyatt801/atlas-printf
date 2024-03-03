@@ -5,18 +5,15 @@
 
 /**
  * int2str - converts int to string
- * @args: variable to print
+ * @num: int to convert
  *
- * Return - string array
+ * Return: string array
  */
 
 char *int2str(int num)
 {
-	int i = 0;
-	int digit;
+	int i = 0, start = 0, end, digit;
 	char *str;
-	int start = 0;
-	int end;
 
 	str = malloc(sizeof(char) * 12);
 
@@ -27,11 +24,8 @@ char *int2str(int num)
 		num = -num;
 	}
 	if (num == 0)
-	{
 		str[i] = '0';
-	}
 	else
-	{
 		while (num != 0)
 		{
 			digit = num % 10;
@@ -39,17 +33,17 @@ char *int2str(int num)
 			i++;
 			num = num / 10;
 		}
-		/*str[i] = '\0';*/
-	}
 
 	if (str[0] == '-')
 		start = 1;
 
 	end = i - 1;
 
+	char tempstr;
+
 	while (start < end)
 	{
-		char tempstr = str[start];
+		tempstr = str[start];
 		str[start] = str[end];
 		str[end] = tempstr;
 		end--;
@@ -92,6 +86,7 @@ int printdigit(va_list args)
 int printchar(va_list args)
 {
 	const char a = va_arg(args, int);
+
 	return (write(1, &a, 1));
 
 }
@@ -110,8 +105,8 @@ int printstr(va_list args)
 
 	if (str == NULL)
 	{
-		write(1,"(null)",6);
-		return	(6);
+		write(1, "(null)", 6);
+		return (6);
 	}
 	else
 	{
