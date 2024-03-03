@@ -28,7 +28,7 @@ int _printf(const char *format, ...)
 			if (*format != '%') /* checks if not % */
 			{
 				f = getspec(format);
-				f(args);
+
 				lenc = lenc + f(args);
 			}
 			else

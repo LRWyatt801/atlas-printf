@@ -92,8 +92,8 @@ int printdigit(va_list args)
 int printchar(va_list args)
 {
 	const char a = va_arg(args, int);
-	write(1, &a, 1);
-	return (1);
+	return (write(1, &a, 1));
+
 }
 
 /**
