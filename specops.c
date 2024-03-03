@@ -22,7 +22,7 @@ char *int2str(int num)
 	if (num < 0)
 	{
 		if (num == INT_MIN) /* special case for INT_MIN */
-			num = INT_MAX + 1;
+			num = INT_MAX;
 		else
 			num = -num;
 		str[i] = '-';
@@ -67,7 +67,8 @@ int printdigit(va_list args)
 	char *str;
 
 	str = int2str(num);
-
+	if (num == INT_MIN)
+		str[10] = '8';
 	while (*str != '\0')
 	{
 		write(1, str, 1);
