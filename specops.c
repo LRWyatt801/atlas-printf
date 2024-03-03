@@ -16,7 +16,7 @@ char *int2str(int num)
 	char *str;
 	char tempstr;
 
-	str = malloc(sizeof(char) * 12);
+	str = malloc(sizeof(char) * 15);
 
 	if (num < 0)
 	{
