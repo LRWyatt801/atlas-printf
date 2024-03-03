@@ -49,7 +49,7 @@ int _printf(const char *format, ...)
 		{
 		write(1, format, 1);
 		lenc++;
-		formatt++;
+		format++;
 		}
 
 	}

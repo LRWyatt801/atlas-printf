@@ -14,6 +14,7 @@ char *int2str(int num)
 {
 	int i = 0, start = 0, end, digit;
 	char *str;
+	char tempstr;
 
 	str = malloc(sizeof(char) * 12);
 
@@ -38,8 +39,6 @@ char *int2str(int num)
 		start = 1;
 
 	end = i - 1;
-
-	char tempstr;
 
 	while (start < end)
 	{
