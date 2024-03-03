@@ -91,7 +91,7 @@ int printdigit(va_list args)
 
 int printchar(va_list args)
 {
-	char a = va_arg(args, int);
+	char a = (char)va_arg(args, int);
 
 	write(1, &a, 1);
 	return (1);
