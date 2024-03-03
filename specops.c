@@ -1,6 +1,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <stdlib.h>
+#include <limits.h>
 #include "main.h"
 
 /**
@@ -20,9 +21,12 @@ char *int2str(int num)
 
 	if (num < 0)
 	{
+		if (num == INT_MIN) /* special case for INT_MIN */
+			num = INT_MAX;
+		else
+			num = -num;
 		str[i] = '-';
 		i++;
-		num = -num;
 	}
 	if (num == 0)
 		str[i] = '0';
@@ -34,12 +38,10 @@ char *int2str(int num)
 			i++;
 			num = num / 10;
 		}
-
 	if (str[0] == '-')
 		start = 1;
 
 	end = i - 1;
-
 	while (start < end)
 	{
 		tempstr = str[start];
