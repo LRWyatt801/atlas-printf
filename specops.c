@@ -108,6 +108,13 @@ int printstr(va_list args)
 	char *str = va_arg(args, char *);
 	int lenr = 0;
 
+	if (str == NULL)
+	{
+		write(1,"(null)",6);
+		return	(6);
+	}
+	else
+	{
 	while (*str != '\0')
 	{
 		write(1, str, 1);
@@ -115,4 +122,6 @@ int printstr(va_list args)
 		lenr++;
 	}
 	return (lenr);
+
+	}
 }
