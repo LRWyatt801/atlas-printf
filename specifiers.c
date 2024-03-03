@@ -26,17 +26,7 @@ int (*getspec(const char *s))(va_list)
 		if (*(identifiers[i].s) == *s)
 			return (identifiers[i].f);
 		i++;
+	}
 	
-	}
-	if (*s != identifiers.s)
-	{
-		write(1,'%', 1);
-		write(1, s, 1);
-	return (2);
-	}
-
-	else
-	{
-		return (0);
-	}
+	return (NULL);
 }

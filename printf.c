@@ -28,8 +28,17 @@ int _printf(const char *format, ...)
 			if (*format != '%') /* checks if not % */
 			{
 				f = getspec(format);
+				if (f == NULL)
+				{
+					write(1, "%", 1);
+					write(1, format, 1);
+					lenc += 2;
+				}
+				else 
+				{
 
 				lenc = lenc + f(args);
+				}
 			}
 			else
 			{
