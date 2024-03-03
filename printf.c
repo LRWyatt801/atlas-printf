@@ -25,7 +25,13 @@ int _printf(const char *format, ...)
 		if (*format == '%') /* checks '%specifier' */
 		{
 			format++;
-			if (*format != '%') /* checks if not % */
+			if (*format == '%') /* checks if not % */
+			{
+				write(1, "%", 1);
+				lenc++;
+				format++;
+			}
+			else if (*format != '\0')
 			{
 				f = getspec(format);
 				if (f == NULL)
@@ -34,24 +40,25 @@ int _printf(const char *format, ...)
 					write(1, format, 1);
 					lenc += 2;
 				}
-				else 
+				else
 				{
-
-				lenc = lenc + f(args);
+					lenc = lenc + f(args);
 				}
+			format++;
 			}
 			else
 			{
-				write(1, format, 1);
-				lenc++;
+				break;
 			}
 		}
 		else
 		{
-			write(1, format, 1);
-			lenc++;
-		}
+		write(1, format, 1);
+		lenc++;
 		format++;
+		}
+
 	}
+	va_end(args);
 	return (lenc);
 }
