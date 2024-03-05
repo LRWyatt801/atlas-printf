@@ -26,3 +26,6 @@ c
 ## Return Value
 
 On a successful return, the \_printf() returns the number of characters printed (excluding the null byte at the end of a string).
+
+#### Authors
+Kiko Sprague and Logan Wyatt
