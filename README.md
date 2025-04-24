@@ -29,3 +29,6 @@ On a successful return, the \_printf() returns the number of characters printed 
 
 #### Authors
 Kiko Sprague and Logan Wyatt
+
+![Screenshot 2025-04-24 151025](https://github.com/user-attachments/assets/b9666e98-440c-4a21-9613-affe7fe915af)
+
